@@ -1,4 +1,5 @@
 using EpsicWatchlistBackend.Data;
+using EpsicWatchlistBackend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,8 @@ namespace EpsicWatchlistBackend
             });
 
             services.AddDbContext<WatchlistDataContext>(x => x.UseSqlite(@"Data Source=Watchlist.db;"));
+
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

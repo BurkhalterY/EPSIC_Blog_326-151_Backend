@@ -81,7 +81,7 @@ namespace EpsicWatchlistBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Is_admin")
+                    b.Property<bool>("IsAdmin")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Password")

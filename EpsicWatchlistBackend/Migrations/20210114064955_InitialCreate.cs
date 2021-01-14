@@ -43,7 +43,7 @@ namespace EpsicWatchlistBackend.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
-                    Is_admin = table.Column<bool>(nullable: false)
+                    IsAdmin = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

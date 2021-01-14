@@ -2,14 +2,16 @@
 using EpsicWatchlistBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EpsicWatchlistBackend.Migrations
 {
     [DbContext(typeof(WatchlistDataContext))]
-    partial class WatchlistDataContextModelSnapshot : ModelSnapshot
+    [Migration("20210114073638_AutoIncrement")]
+    partial class AutoIncrement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
