@@ -32,16 +32,18 @@ namespace EpsicWatchlistBackend.Controllers
         [HttpPost("users/{id}")]
         public IActionResult Update([FromRoute] int id, [FromBody] UserUpdateViewModel model)
         {
-            if (id <= 0) return BadRequest();
+            if (id <= 0) return BadRequest("L'ID doit être suppérieur à 0.");
             if (!_userService.ExistsById(id)) return NotFound();
+            if (!_userService.ConfirmPassword(model.Password, model.Passconf)) return BadRequest("Les mots de passe ne correspondent pas !");
             return Ok(_userService.Update(id, model));
         }
 
         [HttpPost("users")]
         public IActionResult Add(User user)
         {
-            if (_userService.ExistsById(user.Id)) return BadRequest();
-            if (_userService.ExistsByUsername(user.Username)) return BadRequest();
+            if (_userService.ExistsById(user.Id)) return BadRequest("Cet ID est déjà attribué !");
+            if (_userService.ExistsByUsername(user.Username)) return BadRequest("Ce nom d'utilisateur est déjà utilisé !");
+            if (!_userService.ConfirmPassword(user.Password, user.Passconf)) return BadRequest("Les mots de passe ne correspondent pas !");
             _userService.Add(user);
             return Created($"users/{user.Id}", user);
         }
@@ -61,11 +63,11 @@ namespace EpsicWatchlistBackend.Controllers
         }
 
         [HttpPost("users/check_password")]
-        public IActionResult CheckPassword(string username, string password)
+        public IActionResult CheckPassword([FromBody] UserCheckPasswordViewModel user)
         {
-            if (_userService.CheckPasswork(username, password))
+            if (_userService.CheckPassword(user.Username, user.Password))
             {
-                return Ok();
+                return Ok(_userService.GetByUsername(user.Username));
             }
             return StatusCode(403);
         }

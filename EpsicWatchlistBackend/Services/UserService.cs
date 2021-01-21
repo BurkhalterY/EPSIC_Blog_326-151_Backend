@@ -24,7 +24,7 @@ namespace EpsicWatchlistBackend.Services
             return user;
         }
 
-        public bool CheckPasswork(string username, string password)
+        public bool CheckPassword(string username, string password)
         {
             // Source: https://stackoverflow.com/a/10402129/251311
             if (ExistsByUsername(username))
@@ -41,6 +41,11 @@ namespace EpsicWatchlistBackend.Services
                 return true;
             }
             return false;
+        }
+
+        public bool ConfirmPassword(string password, string passconf)
+        {
+            return password == passconf;
         }
 
         public void Delete(int id)
@@ -62,6 +67,11 @@ namespace EpsicWatchlistBackend.Services
         public List<User> GetAll()
         {
             return _context.Users.ToList();
+        }
+
+        public User GetByUsername(string username)
+        {
+            return _context.Users.FirstOrDefault(e => e.Username == username);
         }
 
         public User GetSingle(int id)

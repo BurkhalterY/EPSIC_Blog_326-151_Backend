@@ -8,14 +8,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EpsicWatchlistBackend.Migrations
 {
     [DbContext(typeof(WatchlistDataContext))]
-    [Migration("20210114073638_AutoIncrement")]
-    partial class AutoIncrement
+    [Migration("20210121090004_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.10");
+                .HasAnnotation("ProductVersion", "3.1.11");
 
             modelBuilder.Entity("EpsicWatchlistBackend.Models.Genre", b =>
                 {
@@ -24,11 +24,12 @@ namespace EpsicWatchlistBackend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genre");
+                    b.ToTable("Genres");
                 });
 
             modelBuilder.Entity("EpsicWatchlistBackend.Models.Movie", b =>
@@ -44,6 +45,7 @@ namespace EpsicWatchlistBackend.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Year")
@@ -51,7 +53,7 @@ namespace EpsicWatchlistBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movie");
+                    b.ToTable("Movies");
                 });
 
             modelBuilder.Entity("EpsicWatchlistBackend.Models.MovieGenre", b =>
@@ -85,9 +87,11 @@ namespace EpsicWatchlistBackend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Username")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
