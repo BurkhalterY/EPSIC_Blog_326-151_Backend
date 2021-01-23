@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "EpsicWatchlistBackend": {
+    "EpsicBlogBackend": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",

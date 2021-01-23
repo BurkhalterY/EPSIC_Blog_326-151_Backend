@@ -1,8 +1,8 @@
-﻿using EpsicWatchlistBackend.Models;
-using EpsicWatchlistBackend.Services;
+﻿using EpsicBlogBackend.Models;
+using EpsicBlogBackend.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EpsicWatchlistBackend.Controllers
+namespace EpsicBlogBackend.Controllers
 {
     [ApiController]
     public class UsersController : ControllerBase

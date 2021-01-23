@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EpsicWatchlistBackend.Models
+namespace EpsicBlogBackend.Models
 {
     public class User
     {
@@ -15,7 +15,8 @@ namespace EpsicWatchlistBackend.Models
         [NotMapped]
         public string Passconf { get; set; }
         public bool IsAdmin { get; set; }
-        public List<UserMovie> Movies { get; set; }
+        public List<Post> Posts { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 
     public class UserUpdateViewModel

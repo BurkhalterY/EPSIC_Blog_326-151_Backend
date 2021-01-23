@@ -1,7 +1,7 @@
-﻿using EpsicWatchlistBackend.Models;
+﻿using EpsicBlogBackend.Models;
 using System.Collections.Generic;
 
-namespace EpsicWatchlistBackend.Services
+namespace EpsicBlogBackend.Services
 {
     public interface IUserService
     {

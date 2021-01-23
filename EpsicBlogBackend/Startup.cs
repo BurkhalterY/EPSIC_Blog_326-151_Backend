@@ -1,5 +1,5 @@
-using EpsicWatchlistBackend.Data;
-using EpsicWatchlistBackend.Services;
+using EpsicBlogBackend.Data;
+using EpsicBlogBackend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
 
-namespace EpsicWatchlistBackend
+namespace EpsicBlogBackend
 {
     public class Startup
     {
@@ -38,10 +38,10 @@ namespace EpsicWatchlistBackend
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EpsicWatchlistBackend", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EpsicBlogBackend", Version = "v1" });
             });
 
-            services.AddDbContext<WatchlistDataContext>(x => x.UseSqlite(@"Data Source=Watchlist.db;"));
+            services.AddDbContext<BlogDataContext>(x => x.UseSqlite(@"Data Source=Blog.db;"));
 
             services.AddTransient<IUserService, UserService>();
         }
@@ -59,7 +59,7 @@ namespace EpsicWatchlistBackend
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EpsicWatchlistBackend v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EpsicBlogBackend v1"));
             }
 
             app.UseSwaggerUI(c =>

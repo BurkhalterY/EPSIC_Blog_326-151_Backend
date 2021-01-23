@@ -1,17 +1,17 @@
-﻿using EpsicWatchlistBackend.Data;
-using EpsicWatchlistBackend.Models;
+﻿using EpsicBlogBackend.Data;
+using EpsicBlogBackend.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace EpsicWatchlistBackend.Services
+namespace EpsicBlogBackend.Services
 {
     public class UserService : IUserService
     {
-        private readonly WatchlistDataContext _context;
+        private readonly BlogDataContext _context;
 
-        public UserService(WatchlistDataContext context)
+        public UserService(BlogDataContext context)
         {
             _context = context;
         }
