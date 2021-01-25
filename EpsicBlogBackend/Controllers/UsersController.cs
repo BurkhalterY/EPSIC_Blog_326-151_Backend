@@ -1,6 +1,8 @@
 ﻿using EpsicBlogBackend.Models;
 using EpsicBlogBackend.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace EpsicBlogBackend.Controllers
 {
@@ -34,7 +36,7 @@ namespace EpsicBlogBackend.Controllers
         {
             if (id <= 0) return BadRequest("L'ID doit être suppérieur à 0.");
             if (!_userService.ExistsById(id)) return NotFound();
-            if (!_userService.ConfirmPassword(model.Password, model.Passconf)) return BadRequest("Les mots de passe ne correspondent pas !");
+            if (model.Password != string.Empty && !_userService.ConfirmPassword(model.Password, model.Passconf)) return BadRequest("Les mots de passe ne correspondent pas !");
             return Ok(_userService.Update(id, model));
         }
 
@@ -70,6 +72,29 @@ namespace EpsicBlogBackend.Controllers
                 return Ok(_userService.GetByUsername(user.Username));
             }
             return StatusCode(403);
+        }
+
+        [HttpPost("users/{id}/avatar")]
+        public IActionResult Images([FromRoute] int id, IFormFile file)
+        {
+            var ms = new MemoryStream();
+            file.CopyTo(ms);
+            _userService.SetAvatar(id, ms.ToArray());
+            return Ok();
+        }
+
+        [HttpGet("users/{id}/avatar")]
+        public IActionResult Images([FromRoute] int id)
+        {
+            var avatar = _userService.GetAvatar(id);
+            if (avatar != null)
+            {
+                return File(avatar, "image/png");
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

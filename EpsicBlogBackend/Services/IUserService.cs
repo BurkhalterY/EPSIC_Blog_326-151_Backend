@@ -15,5 +15,7 @@ namespace EpsicBlogBackend.Services
         bool ExistsByUsername(string username);
         bool CheckPassword(string username, string password);
         bool ConfirmPassword(string password, string passconf);
+        void SetAvatar(int id, byte[] image);
+        byte[] GetAvatar(int id);
     }
 }

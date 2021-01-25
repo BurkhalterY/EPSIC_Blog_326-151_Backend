@@ -15,6 +15,7 @@ namespace EpsicBlogBackend.Models
         [NotMapped]
         public string Passconf { get; set; }
         public bool IsAdmin { get; set; }
+        public byte[] Avatar { get; set; }
         public List<Post> Posts { get; set; }
         public List<Comment> Comments { get; set; }
     }

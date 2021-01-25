@@ -69,6 +69,11 @@ namespace EpsicBlogBackend.Services
             return _context.Users.ToList();
         }
 
+        public byte[] GetAvatar(int id)
+        {
+            return GetSingle(id).Avatar;
+        }
+
         public User GetByUsername(string username)
         {
             return _context.Users.FirstOrDefault(e => e.Username == username);
@@ -77,6 +82,13 @@ namespace EpsicBlogBackend.Services
         public User GetSingle(int id)
         {
             return _context.Users.FirstOrDefault(e => e.Id == id);
+        }
+
+        public void SetAvatar(int id, byte[] image)
+        {
+            var caracter = GetSingle(id);
+            caracter.Avatar = image;
+            _context.SaveChanges();
         }
 
         public User Update(int id, UserUpdateViewModel model)
