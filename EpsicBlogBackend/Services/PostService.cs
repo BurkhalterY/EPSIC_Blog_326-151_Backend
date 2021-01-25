@@ -1,5 +1,6 @@
 ﻿using EpsicBlogBackend.Data;
 using EpsicBlogBackend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +17,7 @@ namespace EpsicBlogBackend.Services
 
         public Post Add(Post post)
         {
+            post.Date = DateTime.Now;
             _context.Posts.Add(post);
             _context.SaveChanges();
             return post;

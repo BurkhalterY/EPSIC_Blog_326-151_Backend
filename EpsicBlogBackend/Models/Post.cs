@@ -16,6 +16,7 @@ namespace EpsicBlogBackend.Models
         [Required]
         public string Content { get; set; }
         [Required]
+        public int AuthorId { get; set; }
         public User Author { get; set; }
         public List<Comment> Comments { get; set; }
     }

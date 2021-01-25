@@ -13,8 +13,10 @@ namespace EpsicBlogBackend.Models
         [Required]
         public string Message { get; set; }
         [Required]
+        public int PostId { get; set; }
         public Post Post { get; set; }
         [Required]
+        public int AuthorId { get; set; }
         public User Author { get; set; }
     }
 }

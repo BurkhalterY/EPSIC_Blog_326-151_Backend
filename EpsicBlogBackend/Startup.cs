@@ -44,6 +44,8 @@ namespace EpsicBlogBackend
             services.AddDbContext<BlogDataContext>(x => x.UseSqlite(@"Data Source=Blog.db;"));
 
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPostService, PostService>();
+            services.AddTransient<ICommentService, CommentService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

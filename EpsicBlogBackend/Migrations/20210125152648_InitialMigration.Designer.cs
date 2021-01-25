@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EpsicBlogBackend.Migrations
 {
     [DbContext(typeof(BlogDataContext))]
-    [Migration("20210124100949_AddAvatar")]
-    partial class AddAvatar
+    [Migration("20210125152648_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

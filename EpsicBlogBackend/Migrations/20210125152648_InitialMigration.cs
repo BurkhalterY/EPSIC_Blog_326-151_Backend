@@ -15,7 +15,8 @@ namespace EpsicBlogBackend.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Username = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false),
-                    IsAdmin = table.Column<bool>(nullable: false)
+                    IsAdmin = table.Column<bool>(nullable: false),
+                    Avatar = table.Column<byte[]>(nullable: true)
                 },
                 constraints: table =>
                 {
