@@ -9,14 +9,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EpsicBlogBackend.Migrations
 {
     [DbContext(typeof(BlogDataContext))]
-    [Migration("20210125152648_InitialMigration")]
+    [Migration("20210125153831_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.11");
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("EpsicBlogBackend.Models.Comment", b =>
                 {
@@ -111,6 +111,10 @@ namespace EpsicBlogBackend.Migrations
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("EpsicBlogBackend.Models.Post", b =>
@@ -120,6 +124,20 @@ namespace EpsicBlogBackend.Migrations
                         .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Author");
+                });
+
+            modelBuilder.Entity("EpsicBlogBackend.Models.Post", b =>
+                {
+                    b.Navigation("Comments");
+                });
+
+            modelBuilder.Entity("EpsicBlogBackend.Models.User", b =>
+                {
+                    b.Navigation("Comments");
+
+                    b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
         }
