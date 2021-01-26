@@ -1,5 +1,6 @@
 ﻿using EpsicBlogBackend.Data;
 using EpsicBlogBackend.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,12 +37,18 @@ namespace EpsicBlogBackend.Services
 
         public List<Post> GetAll()
         {
-            return _context.Posts.ToList();
+            return _context.Posts
+                .Include(i => i.Author)
+                .Include(i => i.Comments)
+                .ToList();
         }
 
         public Post GetSingle(int id)
         {
-            return _context.Posts.FirstOrDefault(e => e.Id == id);
+            return _context.Posts
+                .Include(i => i.Author)
+                .Include(i => i.Comments)
+                .FirstOrDefault(e => e.Id == id);
         }
 
         public Post Update(int id, Post model)
@@ -51,7 +58,7 @@ namespace EpsicBlogBackend.Services
             post.Title = model.Title;
             post.Date = model.Date;
             post.Content = model.Content;
-            post.Author = model.Author;
+            post.AuthorId = model.AuthorId;
 
             _context.SaveChanges();
             return post;

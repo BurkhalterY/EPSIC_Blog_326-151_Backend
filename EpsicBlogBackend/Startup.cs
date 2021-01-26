@@ -1,4 +1,4 @@
-using EpsicBlogBackend.Data;
+﻿using EpsicBlogBackend.Data;
 using EpsicBlogBackend.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using System;
 
 namespace EpsicBlogBackend
 {
@@ -23,10 +22,6 @@ namespace EpsicBlogBackend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            /*services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(60);
-            });*/
-
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
@@ -35,7 +30,8 @@ namespace EpsicBlogBackend
                         .AllowAnyHeader());
             });
 
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EpsicBlogBackend", Version = "v1" });
@@ -52,8 +48,6 @@ namespace EpsicBlogBackend
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors("CorsPolicy");
-
-            //app.UseSession();
 
             app.UseSwagger();
 

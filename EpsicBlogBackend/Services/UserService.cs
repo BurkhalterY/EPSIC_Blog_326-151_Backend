@@ -1,5 +1,6 @@
 ﻿using EpsicBlogBackend.Data;
 using EpsicBlogBackend.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +67,10 @@ namespace EpsicBlogBackend.Services
 
         public List<User> GetAll()
         {
-            return _context.Users.ToList();
+            return _context.Users
+                .Include(i => i.Posts)
+                .Include(i => i.Comments)
+                .ToList();
         }
 
         public byte[] GetAvatar(int id)
@@ -81,7 +85,10 @@ namespace EpsicBlogBackend.Services
 
         public User GetSingle(int id)
         {
-            return _context.Users.FirstOrDefault(e => e.Id == id);
+            return _context.Users
+                .Include(i => i.Posts)
+                .Include(i => i.Comments)
+                .FirstOrDefault(e => e.Id == id);
         }
 
         public void SetAvatar(int id, byte[] image)

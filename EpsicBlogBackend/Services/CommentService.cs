@@ -1,5 +1,7 @@
 ﻿using EpsicBlogBackend.Data;
 using EpsicBlogBackend.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,6 +18,7 @@ namespace EpsicBlogBackend.Services
 
         public Comment Add(Comment comment)
         {
+            comment.Date = DateTime.Now;
             _context.Comments.Add(comment);
             _context.SaveChanges();
             return comment;
@@ -34,12 +37,18 @@ namespace EpsicBlogBackend.Services
 
         public List<Comment> GetAll()
         {
-            return _context.Comments.ToList();
+            return _context.Comments
+                .Include(i => i.Author)
+                .Include(i => i.Post)
+                .ToList();
         }
 
         public Comment GetSingle(int id)
         {
-            return _context.Comments.FirstOrDefault(e => e.Id == id);
+            return _context.Comments
+                .Include(i => i.Author)
+                .Include(i => i.Post)
+                .FirstOrDefault(e => e.Id == id);
         }
 
         public Comment Update(int id, Comment model)
@@ -48,8 +57,8 @@ namespace EpsicBlogBackend.Services
 
             comment.Date = model.Date;
             comment.Message = model.Message;
-            comment.Post = model.Post;
-            comment.Author = model.Author;
+            comment.PostId = model.PostId;
+            comment.AuthorId = model.AuthorId;
 
             _context.SaveChanges();
             return comment;

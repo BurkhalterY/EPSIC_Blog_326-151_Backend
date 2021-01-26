@@ -58,5 +58,14 @@ namespace EpsicBlogBackend.Controllers
                 return NoContent();
             }
         }
+
+        [HttpGet("posts/{id}/comments")]
+        public IActionResult GetComments(int id)
+        {
+            if (id <= 0) return BadRequest();
+            var post = _postService.GetSingle(id);
+            if (post == null) return NotFound();
+            return Ok(post.Comments);
+        }
     }
 }
