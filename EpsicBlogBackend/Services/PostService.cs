@@ -43,6 +43,11 @@ namespace EpsicBlogBackend.Services
                 .ToList();
         }
 
+        public List<Comment> GetComments(int id)
+        {
+            return _context.Comments.Include(i => i.Author).Where(x => x.PostId == id).ToList();
+        }
+
         public Post GetSingle(int id)
         {
             return _context.Posts

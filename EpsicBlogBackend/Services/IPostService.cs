@@ -11,5 +11,6 @@ namespace EpsicBlogBackend.Services
         Post Update(int id, Post model);
         void Delete(int id);
         bool ExistsById(int id);
+        List<Comment> GetComments(int id);
     }
 }
