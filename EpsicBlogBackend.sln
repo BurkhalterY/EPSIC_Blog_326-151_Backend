@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EpsicBlogBackend", "EpsicBlogBackend\EpsicBlogBackend.csproj", "{6F09D37D-FE14-4348-AD7E-FFFBDE6F9227}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpsicBlogBackend.Tests", "EpsicBlogBackend.Tests\EpsicBlogBackend.Tests.csproj", "{0403189C-F603-446A-A3A5-A324D7B2BC65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EpsicBlogBackend.Tests", "EpsicBlogBackend.Tests\EpsicBlogBackend.Tests.csproj", "{B9C7B8E2-9FF9-4FAD-BD50-47094E1CF64A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{6F09D37D-FE14-4348-AD7E-FFFBDE6F9227}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F09D37D-FE14-4348-AD7E-FFFBDE6F9227}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F09D37D-FE14-4348-AD7E-FFFBDE6F9227}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0403189C-F603-446A-A3A5-A324D7B2BC65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0403189C-F603-446A-A3A5-A324D7B2BC65}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0403189C-F603-446A-A3A5-A324D7B2BC65}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0403189C-F603-446A-A3A5-A324D7B2BC65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9C7B8E2-9FF9-4FAD-BD50-47094E1CF64A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9C7B8E2-9FF9-4FAD-BD50-47094E1CF64A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9C7B8E2-9FF9-4FAD-BD50-47094E1CF64A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9C7B8E2-9FF9-4FAD-BD50-47094E1CF64A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
